@@ -1,0 +1,172 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Primary: #88B2CC;
+    --Primary-Dark: #80a6be;
+    --Secondary: #658EA9;
+    --Secondary-Dark: #4e6e84;
+    --Salmon: #E98973;
+    --PlayerX: #e7d4c0;
+    --PlayerO: #605e62;
+}
+
+body {
+    background-color: var(--Primary);
+    font-family: 'Itim', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+h1 {
+    color: var(--Secondary-Dark);
+    font-size: 6vh;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+h2 {
+    color: var(--Secondary-Dark);
+    font-size: 3.5vh;
+    letter-spacing: 0.5px;
+}
+
+.players {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: max-content;
+}
+
+h2#playerCircle {
+    margin-left: 2rem;
+}
+
+h2#x {
+    margin-left: 0.5rem;
+}
+
+h2#circle {
+    margin-left: 0.5rem;
+}
+
+.playerX::after {
+    content: "X";
+    font-size: 5vh;
+    cursor: pointer;
+    color: var(--PlayerX);
+}
+
+.playerCircle::after {
+    content: "O";
+    font-size: 5vh;
+    cursor: pointer;
+    color: var(--PlayerO)
+}
+
+.content {
+    align-content: center;
+    justify-content: center;
+    background-color: var(--Secondary);
+    width: 60vh;
+    height: 60vh;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-areas: 
+            "div1 div2 div3"
+            "div4 div5 div6"
+            "div7 div8 div9";
+}
+
+div {
+    background-color: var(--Primary); 
+}
+
+.box.x::after {
+    content: "X";
+    font-size: 16vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--PlayerX);
+}
+
+.box.circle::after {
+    content: "O";
+    font-size: 16vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--PlayerO)
+}
+
+.box:hover {
+    background-color: var(--Primary-Dark)
+}
+
+.reset {
+    background-color: var(--Secondary-Dark);
+    color: var(--PlayerX);
+    padding: 0.25rem 1rem;
+    border-radius: 0.25em;
+    font-size: 4vh;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.reset:hover {
+    filter: drop-shadow(0 2px 4px var(--Secondary));
+}
+
+    @media screen and (max-width:480px) {
+        body {
+            overflow-y: hidden;
+        }
+        
+        .container {
+            height: 100vh;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .content {
+            width: 45vh;
+            height: 45vh;
+        }
+
+        .reset {
+            margin: 0 0 8rem 0;
+        }
+          
+        .box.x::after {
+            font-size: 12vh;
+        }
+        
+        .box.circle::after {
+            font-size: 12vh;
+        }
+}
+
