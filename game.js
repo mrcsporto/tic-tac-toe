@@ -14,9 +14,27 @@ const winnerCombination =[
     [2, 4, 6]
 ]
 
+function changeColor() {
+    if(currentPlayer == 'x'){
+        document.getElementById('playerCircle').style.backgroundColor = '#88B2CC'
+        document.getElementById('playerCircle').style.border = '2px solid transparent' 
+        document.getElementById('playerX').style.backgroundColor = '#a9c7db'
+        document.getElementById('playerX').style.padding = '0.10rem 0.75rem'
+        document.getElementById('playerX').style.border = '2px solid rgb(101, 142, 169)'   
+    } 
+    if(currentPlayer == 'circle') {
+        document.getElementById('playerX').style.backgroundColor = '#88B2CC'
+        document.getElementById('playerX').style.border = '2px solid transparent' 
+        document.getElementById('playerCircle').style.backgroundColor = '#a9c7db'
+        document.getElementById('playerCircle').style.padding = '0.10rem 0.75rem'
+        document.getElementById('playerCircle').style.border = '2px solid rgb(101, 142, 169)'    
+    }
+
+}
+
 function firstPlayer() {
     if(window.location.href.includes("#x")) {
-        currentPlayer = 'x'
+        currentPlayer = 'x' 
     } else {
         currentPlayer = 'circle'
     }
@@ -37,6 +55,7 @@ for (let i = 0; i < classes.length; i++) {
             boxElement.classList.add(currentPlayer)
             countTurn()
         }
+        changeColor()
         changePlayer()
         checkWinner()
     }

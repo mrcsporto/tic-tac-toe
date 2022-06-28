@@ -67,6 +67,19 @@ h2 {
     background-color: var(--Primary);
 }
 
+.box.x {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--PlayerX);
+}
+
+.box.circle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--PlayerO);
+    text-decoration: none;
+}
+
 .players {
     margin: 0 0 20px 0;
 }
@@ -85,19 +98,6 @@ h2 {
 
 h2#playerX {
     margin-bottom: 8px;
-}
-
-.box.x {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--PlayerX);
-}
-
-.box.circle {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--PlayerO);
-    text-decoration: none;
 }
 
 #playerX:hover,
