@@ -1,0 +1,118 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Primary: #88B2CC;
+    --Primary-Light: #a9c7db;
+    --Primary-Dark: #80a6be;
+    --Secondary: #658EA9;
+    --Secondary-Dark: #4e6e84;
+    --Salmon: #E98973;
+    --Salmon-Ligth: #e9897342;
+    --PlayerX: #e7d4c0;
+    --PlayerO: #605e62;
+}
+
+body {
+    background-color: var(--Secondary-Dark);
+    font-family: 'Itim', sans-serif;
+}
+
+main {
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    color: var(--Primary);
+    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+h2 {
+    color: var(--Secondary-Dark);
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}    
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 300px;
+    height: 250px;
+    border-bottom: 5px solid var(--Primary-Dark);
+    border-right: 5px solid var(--Primary-Dark);
+    border-left: 5px solid var(--Secondary);
+    border-top: 5px solid var(--Secondary);
+    background-color: var(--Primary);
+}
+
+.players {
+    margin: 0 0 20px 0;
+}
+
+#playerX, #playerCircle {
+    border-top: 1.75px solid var(--Secondary);
+    border-left: 1.75px solid var(--Secondary);
+    border-right: 2.5px solid var(--Secondary-Dark);
+    border-bottom: 2.5px solid var(--Secondary-Dark);
+    border-radius: 2.5px;
+    background-color: var(--Primary);
+    width: 140px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+h2#playerX {
+    margin-bottom: 8px;
+}
+
+.box.x {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--PlayerX);
+}
+
+.box.circle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--PlayerO);
+    text-decoration: none;
+}
+
+#playerX:hover,
+#playerCircle:hover {
+    background-color: var(--Secondary);
+    border: 1.5px solid var(--Secondary-Dark);
+    box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
+    transform: translateY(-0.1em);
+    cursor: pointer;
+    color: var(--Primary-Light)
+}
+
+#playerX:active,
+#playerCircle:active {
+transform: translateY(0);
+background-color: var(--Secondary-Dark);
+box-shadow: none;
+}
