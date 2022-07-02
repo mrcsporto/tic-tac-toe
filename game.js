@@ -102,7 +102,6 @@ function checkWinner() {
             const newWinner = xTurn.map(checkTrue)
             const winCount = newWinner.filter(Boolean).length
             if (winCount >= 3) {
-                console.log('Player X Wins!!')
                 hasWinner = true
             }
         }
@@ -111,7 +110,6 @@ function checkWinner() {
             const winCount = newWinner.filter(Boolean).length
 
             if (winCount >= 3) {
-                console.log('Player O Wins!!')
                 hasWinner = true
             }
         }
