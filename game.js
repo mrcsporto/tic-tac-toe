@@ -55,6 +55,7 @@ for (let i = 0; i < classes.length; i++) {
     let boxElement = classes[i]
     function inputMark() {
         if (hasWinner) {
+            handler()
             return
         }
         if (currentPlayer == 'circle') {
@@ -67,6 +68,7 @@ for (let i = 0; i < classes.length; i++) {
         changePlayer()
         checkWinner()
         changeColor()
+      
     }
 
     function countTurn() {
@@ -103,6 +105,7 @@ function checkWinner() {
             const winCount = newWinner.filter(Boolean).length
             if (winCount >= 3) {
                 hasWinner = true
+                showWinner()
             }
         }
         if (circleTurn.length >= 3) {
@@ -120,7 +123,20 @@ function checkWinner() {
 }
 
 function checkDraw() {
+
     if ((xTurn.length + circleTurn.length === 9)) {
         console.log('Its a Tie!')
     }
+}
+
+function showWinner() {
+    document.getElementById('winner').style.display = 'block'
+    document.getElementById('viewPort').style.filter = 'blur(1.5px)'
+ 
+}
+    
+
+    
+function handler() {
+  document.removeEventListener('click', handler, true)
 }

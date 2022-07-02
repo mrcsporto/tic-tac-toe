@@ -53,6 +53,7 @@ h2 {
     padding: 0.10rem 0.75rem;
     border: 2px solid transparent;
 }
+
 #MarkPlayerCircle {
     margin-left: 1rem;
 }
@@ -90,14 +91,14 @@ h2 {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 5px;
-    grid-template-areas: 
-            "div1 div2 div3"
-            "div4 div5 div6"
-            "div7 div8 div9";
+    grid-template-areas:
+        "div1 div2 div3"
+        "div4 div5 div6"
+        "div7 div8 div9";
 }
 
 div {
-    background-color: var(--Primary); 
+    background-color: var(--Primary);
 }
 
 .box.x::after {
@@ -156,37 +157,41 @@ div {
     box-shadow: none;
 }
 
-
-    @media screen and (max-width:480px) {
-        body {
-            overflow-y: hidden;
-        }
-        
-        .container {
-            height: 100vh;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        .content {
-            width: 45vh;
-            height: 45vh;
-        }
-
-        .reset {
-            margin: 0 0 8rem 0;
-        }
-          
-        .box.x::after {
-            font-size: 12vh;
-        }
-        
-        .box.circle::after {
-            font-size: 12vh;
-        }
+#winner {
+    display: none;
+    position: absolute;
+    margin: auto;
 }
 
+@media screen and (max-width:480px) {
+    body {
+        overflow-y: hidden;
+    }
+
+    .container {
+        height: 100vh;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .content {
+        width: 45vh;
+        height: 45vh;
+    }
+
+    .reset {
+        margin: 0 0 8rem 0;
+    }
+
+    .box.x::after {
+        font-size: 12vh;
+    }
+
+    .box.circle::after {
+        font-size: 12vh;
+    }
+}
