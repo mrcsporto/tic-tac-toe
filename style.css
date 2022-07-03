@@ -105,7 +105,7 @@ h2#playerX {
 #playerCircle:hover {
     background-color: var(--Secondary);
     box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
-    transform: translateY(-0.1em);
+    transform: translateY(0.1em);
     cursor: pointer;
     color: var(--Primary-Light)
 }
