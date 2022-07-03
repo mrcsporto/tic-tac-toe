@@ -157,19 +157,19 @@ div {
     box-shadow: none;
 }
 
-#winner {
+/* #winner {
     display: none;
     position: absolute;
     text-align: center;
     line-height: 100vh;
-    width: 80%;
-    height: 100%;
+    width: 20%;
+    height: 20%;
     background-color: var(--Primary);
     color: var(--Secondary-Dark);
     font-size: 6vh;
     font-weight: 600;
     letter-spacing: 0.5px;
-}
+} */
 
 @media screen and (max-width:480px) {
     body {
