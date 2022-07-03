@@ -50,7 +50,7 @@ h2 {
     align-items: center;
     justify-content: center;
     height: 100%;
-}    
+}
 
 .content {
     display: flex;
@@ -84,7 +84,8 @@ h2 {
     margin: 0 0 20px 0;
 }
 
-#playerX, #playerCircle {
+#playerX,
+#playerCircle {
     border-top: 1.75px solid var(--Secondary);
     border-left: 1.75px solid var(--Secondary);
     border-right: 2.5px solid var(--Secondary-Dark);
@@ -103,7 +104,6 @@ h2#playerX {
 #playerX:hover,
 #playerCircle:hover {
     background-color: var(--Secondary);
-    border: 1.5px solid var(--Secondary-Dark);
     box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
     transform: translateY(-0.1em);
     cursor: pointer;
@@ -112,7 +112,7 @@ h2#playerX {
 
 #playerX:active,
 #playerCircle:active {
-transform: translateY(0);
-background-color: var(--Secondary-Dark);
-box-shadow: none;
+    transform: translateY(0);
+    background-color: var(--Secondary-Dark);
+    box-shadow: none;
 }

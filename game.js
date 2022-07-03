@@ -41,6 +41,7 @@ function changeColor() {
     }
 }
 
+// function to insert player's symbol on the document location
 function firstPlayer() {
     if(window.location.href.includes("#x")) {
         currentPlayer = 'x' 
@@ -51,6 +52,8 @@ function firstPlayer() {
     changeColor()
 
 
+// loop to look up in which box the player has clicked on the classes Array
+// Add the mark of the current player into the HTML class
 for (let i = 0; i < classes.length; i++) {
     let boxElement = classes[i]
     function inputMark() {
@@ -67,14 +70,18 @@ for (let i = 0; i < classes.length; i++) {
         changePlayer()
         checkWinner()
         changeColor()
+      
     }
 
+    // Get which exactly possition of the classes Array was clicked and push it into the circleTurn and xTurn Arrays
     function countTurn() {
         if (currentPlayer == 'circle') {
             classIndex = classes.lastIndexOf(boxElement)
+            console.log(classIndex)
             circleTurn.push(classIndex)
         } else {
             classIndex = classes.lastIndexOf(boxElement)
+            console.log(classIndex)
             xTurn.push(classIndex)
         }
     }
@@ -89,21 +96,24 @@ function changePlayer() {
     }
 }
 
+function checkTrue(counter) {
+    return winner.includes(counter)
+}
+
 function checkWinner() {
     for (let j = 0; j < winnerCombination.length; j++) {
         winner = winnerCombination[j]
 
-        function checkTrue(counter) {
-            return winner.includes(counter)
-        }
         checkTrue()
 
         if (xTurn.length >= 3) {
             const newWinner = xTurn.map(checkTrue)
+            // console.log(newWinner)
             const winCount = newWinner.filter(Boolean).length
+            // console.log(winCount)
             if (winCount >= 3) {
-                console.log('Player X Wins!!')
                 hasWinner = true
+                // showWinner()
             }
         }
         if (circleTurn.length >= 3) {
@@ -111,8 +121,8 @@ function checkWinner() {
             const winCount = newWinner.filter(Boolean).length
 
             if (winCount >= 3) {
-                console.log('Player O Wins!!')
                 hasWinner = true
+                // showWinner()
             }
         }
     }
@@ -123,6 +133,17 @@ function checkWinner() {
 
 function checkDraw() {
     if ((xTurn.length + circleTurn.length === 9)) {
-        console.log('Its a Tie!')
+        document.getElementById('winner').style.display = 'block'
+        document.getElementById('winner').innerHTML = 'Its a tie!!'
     }
 }
+
+// function showWinner() {
+//     document.getElementById('winner').style.display = 'block'
+//     document.getElementById('winner').innerHTML = 'Player ' + currentPlayer + ' won!!'
+   
+// }
+
+// function redirect() {
+//     document.location.href = 'http://127.0.0.1:5500/index.html';
+// }
