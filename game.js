@@ -156,7 +156,7 @@ function checkWinner() {
 
 // Countdown timer for redirecting to another URL after several seconds
 function redirect() {
-    document.location.href = 'http://127.0.0.1:5500/index.html'
+    document.location.href = 'index.html'
 }
 
 function updateSecs() {
@@ -173,5 +173,5 @@ function countdownTimer() {
 }
 
 document.getElementById("restart").onclick = function() {
-    location.href = "http://127.0.0.1:5500/index.html"
+    location.href = "index.html"
 }
