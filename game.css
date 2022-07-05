@@ -20,6 +20,10 @@ body {
     font-family: 'Itim', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
     color: var(--Secondary-Dark);
     font-size: 6vh;
@@ -31,6 +35,18 @@ h2 {
     color: var(--Secondary-Dark);
     font-size: 3.5vh;
     letter-spacing: 0.5px;
+}
+
+h3 {
+    color: var(--Secondary);
+    letter-spacing: 0.5px;
+    bottom: 0;
+    text-align: center;
+}
+
+h3  a {
+    color: var(--Secondary-Dark);
+    text-decoration: none;
 }
 
 .container {
@@ -47,7 +63,7 @@ h2 {
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 100vh;
 }
 
