@@ -95,7 +95,7 @@ for (let i = 0; i < classes.length; i++) {
     })
 }
 
-// Check if is draw
+// Check if is draw and show menssage
 function checkDraw() {
     if ((xTurn.length + circleTurn.length === 9)) {
         document.getElementById('winner').style.display = 'block'
@@ -106,14 +106,14 @@ function checkDraw() {
         countdownTimer()
     }
 }
-
+// Check which player is the winner and show the menssage
 function showWinner() {
     document.getElementById('winner').style.display = 'block'
     document.getElementById('restart').style.display = 'block'
     document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
     document.getElementById('viewPort').style.filter = 'blur(6px)'
     document.getElementById('player').classList.add('player' + winnerPlayer)
-    // countdownTimer()
+    countdownTimer()
 }
 
 // function to return the 
