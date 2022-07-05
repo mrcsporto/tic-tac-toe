@@ -1,6 +1,6 @@
-#A SIMPLE TIC-TAC-TOE GAME IN JAVASCRIPT
+A SIMPLE TIC-TAC-TOE GAME IN JAVASCRIPT
 
-##(1) Grid layout
+(1) Grid layout
 
 The game grid is represented in the array Grid.cells as follows:
 
@@ -15,4 +15,4 @@ if the sum of all the cells in a row is 9, the computer wins,
 if it is 3 and all the cells are occupied, the human player wins,
 etc.
 
-##(2) hasWinner()
+(2) hasWinner()
