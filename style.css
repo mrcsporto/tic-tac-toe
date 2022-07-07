@@ -19,11 +19,11 @@
 body {
     background-color: var(--Secondary-Dark);
     font-family: 'Itim', sans-serif;
-    height: 100vh;
 }
 
 main {
     height: 95vh;
+    overflow: hidden;
 }
 
 a   {
@@ -47,8 +47,8 @@ h2 {
 h3 {
     color: var(--Secondary);
     letter-spacing: 0.5px;
-    bottom: 0;
     text-align: center;
+    margin-top: 1rem;
 }
 
 h3  a {
@@ -128,4 +128,26 @@ h2#playerX {
     transform: translateY(0);
     background-color: var(--Secondary-Dark);
     box-shadow: none;
+}
+
+@media screen and (max-width:480px) {
+
+    .container {
+        height: 50%;
+        overflow: hidden;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .content {
+        width: 300px;
+        height: 250px;
+    }
+
+    h3 {
+        bottom: 500px;
+    }
+
 }
