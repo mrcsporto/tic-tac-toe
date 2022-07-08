@@ -54,7 +54,6 @@ function changeColor() {
         document.getElementById('MarkPlayerCircle').style.border = '2px solid transparent'
     }
 }
-
 firstPlayer()
 changeColor()
 
@@ -95,35 +94,13 @@ for (let i = 0; i < classes.length; i++) {
     })
 }
 
-// Check which player is the winner and show the menssage
-function showWinner() {
-    document.getElementById('winner').style.display = 'block'
-    document.getElementById('restart').style.display = 'block'
-    document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
-    document.getElementById('viewPort').style.filter = 'blur(6px)'
-    document.getElementById('player').classList.add('player' + winnerPlayer)
-    countdownTimer()
-}
-
-// function to return the 
+// function to return the winners combination in a include function
 function checkTrue(countTrue) {
     return winner.includes(countTrue)
 }
 
-// Check if is draw and show menssage
-function checkDraw() {
-    if ((xTurn.length + circleTurn.length === 9)) {
-        document.getElementById('winner').style.display = 'block'
-        document.getElementById('restart').style.display = 'block'
-        document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
-        document.getElementById('viewPort').style.filter = 'blur(6px)'
-        document.getElementById('winner').innerHTML = 'Its a tie!!'
-        countdownTimer()
-    }
-}
-
 // loop to obtained an Array newWinner by calling the function checkTrue() with map() method
-// This function will loop through the winner's Array to check if the xTurn or circleTurn Arrays match any winning combination
+// This function will loop through the winner's Array to check if the xTurn or circleTurn Arrays matches to any winning combination
 // winCount will filter into the newWinner Array only the true
 // If winCount has 3 or more true then will input true on hasWinner variable
 function checkWinner() {
@@ -152,6 +129,28 @@ function checkWinner() {
     }
     if (hasWinner !== true) {
         checkDraw()
+    }
+}
+
+// Check which player is the winner and show the menssage
+function showWinner() {
+    document.getElementById('winner').style.display = 'block'
+    document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
+    document.getElementById('player').classList.add('player' + winnerPlayer)
+    document.getElementById('restart').style.display = 'block'
+    document.getElementById('viewPort').style.filter = 'blur(6px)'
+    countdownTimer()
+}
+
+// Check if is draw and show menssage
+function checkDraw() {
+    if ((xTurn.length + circleTurn.length === 9)) {
+        document.getElementById('winner').style.display = 'block'
+        document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
+        document.getElementById('winner').innerHTML = 'Its a tie!!'
+        document.getElementById('restart').style.display = 'block'
+        document.getElementById('viewPort').style.filter = 'blur(6px)'
+        countdownTimer()
     }
 }
 
