@@ -22,7 +22,7 @@ body {
 }
 
 main {
-    height: 95vh;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -133,21 +133,16 @@ h2#playerX {
 @media screen and (max-width:480px) {
 
     .container {
-        height: 50%;
+        justify-content: flex-start;
         overflow: hidden;
     }
 
     h1 {
-        margin: 0;
+        margin: 1rem 0 1rem 0;
     }
 
     .content {
         width: 300px;
         height: 250px;
     }
-
-    h3 {
-        bottom: 500px;
-    }
-
 }

@@ -70,8 +70,8 @@ function changePlayer() {
 // The loop will look up in the Array Classes which .box element the player has clicked 
 // Add a mark of the current player into the .box element
 for (let i = 0; i < classes.length; i++) {
-    const boxElement = classes[i]
-    //inputMark function is activated by an click event
+    let boxElement = classes[i]
+    //inputMark function is activated by a click event
     function inputMark() {
         boxElement.classList.add(currentPlayer)
         countTurn()
@@ -95,17 +95,6 @@ for (let i = 0; i < classes.length; i++) {
     })
 }
 
-// Check if is draw and show menssage
-function checkDraw() {
-    if ((xTurn.length + circleTurn.length === 9)) {
-        document.getElementById('winner').style.display = 'block'
-        document.getElementById('restart').style.display = 'block'
-        document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
-        document.getElementById('viewPort').style.filter = 'blur(6px)'
-        document.getElementById('winner').innerHTML = 'Its a tie!!'
-        countdownTimer()
-    }
-}
 // Check which player is the winner and show the menssage
 function showWinner() {
     document.getElementById('winner').style.display = 'block'
@@ -119,6 +108,18 @@ function showWinner() {
 // function to return the 
 function checkTrue(countTrue) {
     return winner.includes(countTrue)
+}
+
+// Check if is draw and show menssage
+function checkDraw() {
+    if ((xTurn.length + circleTurn.length === 9)) {
+        document.getElementById('winner').style.display = 'block'
+        document.getElementById('restart').style.display = 'block'
+        document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
+        document.getElementById('viewPort').style.filter = 'blur(6px)'
+        document.getElementById('winner').innerHTML = 'Its a tie!!'
+        countdownTimer()
+    }
 }
 
 // loop to obtained an Array newWinner by calling the function checkTrue() with map() method
