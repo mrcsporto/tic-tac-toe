@@ -232,11 +232,12 @@ div {
 
 #seconds {
     position: absolute;
-    bottom: 15px;
+    bottom: 0;
     color: var(--Secondary);
     background-color: transparent;
-    font-size: 120%;
+    font-size: 130%;
     letter-spacing: 0.5px;
+    height: 38vh;
 }
 
 @media screen and (max-width:480px) {
@@ -245,15 +246,13 @@ div {
     }
 
     .container {
-        height: 100vh;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-around;
+        padding-bottom: 8rem;
     }
 
     #viewPort {
-        height: 100vh;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        height: 82vh;
+        justify-content: space-around;
     }
 
     h1 {
@@ -263,6 +262,11 @@ div {
     .content {
         width: 45vh;
         height: 45vh;
+    }
+
+    #winner {
+        bottom: 0;
+        height: 107vh;
     }
 
     .reset {
@@ -275,5 +279,10 @@ div {
 
     .box.circle::after {
         font-size: 12vh;
+    }
+    #seconds {
+        height: 45vh;
+    
+
     }
 }

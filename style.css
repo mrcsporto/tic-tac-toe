@@ -132,9 +132,17 @@ h2#playerX {
 
 @media screen and (max-width:480px) {
 
+    body {
+        overflow-y: hidden;
+    }
+
+    main {
+        height: 80vh;
+    }
+
     .container {
         justify-content: flex-start;
-        overflow: hidden;
+        height: 50vh;
     }
 
     h1 {
