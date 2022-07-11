@@ -248,7 +248,7 @@ div {
     }
 
     #viewPort {
-        height: 100vh;
+        height: 90vh;
         justify-content: space-around;
     }
 
@@ -279,6 +279,6 @@ div {
     }
     #seconds {
         height: 35vh;
-        font-size: 5vw;
+        font-size: 4vw;
     }
 }
