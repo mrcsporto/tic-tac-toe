@@ -248,7 +248,7 @@ div {
     }
 
     #viewPort {
-        height: 83vh;
+        height: 100vh;
         justify-content: space-around;
     }
 
@@ -263,15 +263,11 @@ div {
 
     #winner {
         bottom: 0;
-        height: 107vh;
+        height: 94vh;
     }
 
     .reset {
         margin: 0 0 8rem 0;
-    }
-
-    #restart {
-        margin-top: 6rem;
     }
 
     .box.x::after {
@@ -282,7 +278,7 @@ div {
         font-size: 12vh;
     }
     #seconds {
-        height: 45vh;
-        font-size: 3.5vw;
+        height: 35vh;
+        font-size: 5vw;
     }
 }
