@@ -66,7 +66,7 @@ function changePlayer() {
     }
 }
 
-function callFunction(arr) {
+function markBox(arr) {
     for (let i = 0; i < arr.length; i++){
       let boxElement = arr[i]
      //inputMark() is activated by a click event that // Add a mark of the current player into the .box element
@@ -77,19 +77,19 @@ function callFunction(arr) {
         changeColor()
     }
 // Get the last index of the classes's Array was clicked and push it into the circleTurn and xTurn Arrays
-    function countTurn(turn) {
-        turn.classList.add(currentPlayer)
+    function countTurn(boxElement) {
+        boxElement.classList.add(currentPlayer)
         if (currentPlayer == 'circle') {
-            classIndex = classes.indexOf(turn)
+            classIndex = classes.indexOf(boxElement)
             circleTurn.push(classIndex)
         } else {
-            classIndex = classes.indexOf(turn)
+            classIndex = classes.indexOf(boxElement)
             xTurn.push(classIndex)
         }
     } 
         boxElement.addEventListener('click', inputMark, {once: true})
     }
-} callFunction(classes)
+} markBox(classes)
 
 // function to return the winners combination in a include function
 function checkTrue(countTrue) {
