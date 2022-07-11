@@ -197,7 +197,7 @@ div {
 #restart {
     display: none;
     position: absolute;
-    margin-top: 2.5em;
+    margin-top: 4rem;
     color: var(--Secondary);
     border-top: 1.75px solid var(--Secondary);
     border-left: 1.75px solid var(--Secondary);
@@ -241,14 +241,6 @@ div {
 }
 
 @media screen and (max-width:480px) {
-    body {
-        overflow: hidden;
-    }
-
-    main {
-        overflow: hidden;
-    }
-
     .container {
         justify-content: space-around;
         padding-bottom: 8rem;
@@ -256,9 +248,8 @@ div {
     }
 
     #viewPort {
-        height: 82vh;
+        height: 83vh;
         justify-content: space-around;
-        overflow: hidden;
     }
 
     h1 {
@@ -279,6 +270,10 @@ div {
         margin: 0 0 8rem 0;
     }
 
+    #restart {
+        margin-top: 6rem;
+    }
+
     .box.x::after {
         font-size: 12vh;
     }
@@ -288,7 +283,6 @@ div {
     }
     #seconds {
         height: 45vh;
-    
-
+        font-size: 3.5vw;
     }
 }
