@@ -71,7 +71,7 @@ h3  a {
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 300px;
+    width: 325px;
     height: 250px;
     border-bottom: 5px solid var(--Primary-Dark);
     border-right: 5px solid var(--Primary-Dark);
@@ -141,8 +141,8 @@ h2#playerX {
     }
 
     .container {
-        justify-content: flex-start;
-        height: 50vh;
+        justify-content: center;
+        height: 70vh;
     }
 
     h1 {

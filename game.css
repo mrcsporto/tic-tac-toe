@@ -242,17 +242,23 @@ div {
 
 @media screen and (max-width:480px) {
     body {
-        overflow-y: hidden;
+        overflow: hidden;
+    }
+
+    main {
+        overflow: hidden;
     }
 
     .container {
         justify-content: space-around;
         padding-bottom: 8rem;
+        overflow: hidden;
     }
 
     #viewPort {
         height: 82vh;
         justify-content: space-around;
+        overflow: hidden;
     }
 
     h1 {
