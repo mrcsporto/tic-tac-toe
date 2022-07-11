@@ -270,6 +270,10 @@ div {
         margin: 0 0 8rem 0;
     }
 
+    #restart {
+        margin-top: 15vh;
+    }
+
     .box.x::after {
         font-size: 12vh;
     }
@@ -278,7 +282,7 @@ div {
         font-size: 12vh;
     }
     #seconds {
-        height: 35vh;
-        font-size: 4vw;
+        height: 32vh;
+        font-size: 3.5vw;
     }
 }
