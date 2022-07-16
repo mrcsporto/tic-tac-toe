@@ -20,6 +20,10 @@ body {
     font-family: 'Itim', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
     color: var(--Secondary-Dark);
     font-size: 6vh;
@@ -33,12 +37,33 @@ h2 {
     letter-spacing: 0.5px;
 }
 
+h3 {
+    color: var(--Secondary);
+    letter-spacing: 0.5px;
+    bottom: 0;
+    text-align: center;
+}
+
+h3  a {
+    color: var(--Secondary-Dark);
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    height: 100vh;
+}
+
+#viewPort {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     height: 100vh;
 }
 
@@ -58,25 +83,23 @@ h2 {
     margin-left: 1rem;
 }
 
-#x {
+.playerX {
     margin-left: 0.5rem;
 }
 
-#circle {
+.playerCircle {
     margin-left: 0.5rem;
 }
 
 .playerX::after {
     content: "X";
     font-size: 5vh;
-    cursor: pointer;
     color: var(--PlayerX);
 }
 
 .playerCircle::after {
     content: "O";
     font-size: 5vh;
-    cursor: pointer;
     color: var(--PlayerO)
 }
 
@@ -132,8 +155,8 @@ div {
     border-bottom: 2.5px solid var(--Secondary-Dark);
     background-color: var(--Secondary);
     color: var(--Primary-Light);
-    width: 140px;
-    padding: 0.25rem 1.25rem;
+    width: max-content;
+    padding: 0.25rem 0.5rem;
     font-size: 4vh;
     font-weight: 600;
     letter-spacing: 0.15rem;
@@ -157,29 +180,76 @@ div {
     box-shadow: none;
 }
 
-/* #winner {
-    display: none;
+#winner {
+    display:none;
     position: absolute;
     text-align: center;
-    line-height: 100vh;
-    width: 20%;
-    height: 20%;
+    line-height: 90vh;
+    width: 100%;
+    height: 100%;
     background-color: var(--Primary);
     color: var(--Secondary-Dark);
     font-size: 6vh;
     font-weight: 600;
     letter-spacing: 0.5px;
-} */
+}
+
+#restart {
+    display: none;
+    position: absolute;
+    margin-top: 4rem;
+    color: var(--Secondary);
+    border-top: 1.75px solid var(--Secondary);
+    border-left: 1.75px solid var(--Secondary);
+    border-right: 2.5px solid var(--Secondary-Dark);
+    border-bottom: 2.5px solid var(--Secondary-Dark);
+    background-color: var(--Secondary);
+    color: var(--Primary-Light);
+    width: max-content;
+    padding: 0.25rem 0.5rem;
+    font-size: 4vh;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#restart:hover {
+    background-color: var(--Primary-Light);
+    border: 1.5px solid var(--Secondary-Dark);
+    box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
+    color: var(--Secondary-Dark);
+    transform: translateY(-0.1em);
+    cursor: pointer;
+}
+
+#restart:active {
+    transform: translateY(0);
+    background-color: var(--Secondary-Dark);
+    color: var(--Primary-Dark);
+    box-shadow: none;
+}
+
+#seconds {
+    position: absolute;
+    bottom: 0;
+    color: var(--Secondary);
+    background-color: transparent;
+    font-size: 130%;
+    letter-spacing: 0.5px;
+    height: 38vh;
+}
 
 @media screen and (max-width:480px) {
-    body {
-        overflow-y: hidden;
+    .container {
+        justify-content: space-around;
+        padding-bottom: 8rem;
+        overflow: hidden;
     }
 
-    .container {
-        height: 100vh;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+    #viewPort {
+        height: 90vh;
+        justify-content: space-around;
     }
 
     h1 {
@@ -191,8 +261,17 @@ div {
         height: 45vh;
     }
 
+    #winner {
+        bottom: 0;
+        height: 94vh;
+    }
+
     .reset {
         margin: 0 0 8rem 0;
+    }
+
+    #restart {
+        margin-top: 15vh;
     }
 
     .box.x::after {
@@ -201,5 +280,9 @@ div {
 
     .box.circle::after {
         font-size: 12vh;
+    }
+    #seconds {
+        height: 32vh;
+        font-size: 2vh;
     }
 }

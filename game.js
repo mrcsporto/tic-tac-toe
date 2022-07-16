@@ -1,8 +1,10 @@
-let classes = Array.from(document.querySelectorAll(".box"));
-let xTurn = [];
-let circleTurn = [];
-let currentPlayer = "";
-let hasWinner;
+let classes = Array.from(document.querySelectorAll(".box")); // variable to catch all the .box div and storage to a Array
+let xTurn = []; // Array to storage the X player moves
+let circleTurn = []; // Array to storage the Circle player moves
+let currentPlayer = ""; //actual current player
+let hasWinner; // variable to storage if game has a winner
+let seconds = 5; // seconds for HTML
+let foo; // variable for clearInterval() function
 const winnerCombination = [
   [0, 1, 2],
   [3, 4, 5],
@@ -14,6 +16,16 @@ const winnerCombination = [
   [2, 4, 6],
 ];
 
+// function to insert player's symbol into the local path
+function firstPlayer() {
+  if (window.location.href.includes("#x")) {
+    currentPlayer = "x";
+  } else {
+    currentPlayer = "circle";
+  }
+}
+
+//function to highlight the player's turn when the game is running
 function changeColor() {
   if (currentPlayer == "x") {
     document.getElementById("MarkPlayerCircle").style.backgroundColor =
@@ -55,53 +67,10 @@ function changeColor() {
       "2px solid transparent";
   }
 }
-
-// function to insert player's symbol on the document location
-function firstPlayer() {
-  if (window.location.href.includes("#x")) {
-    currentPlayer = "x";
-  } else {
-    currentPlayer = "circle";
-  }
-}
 firstPlayer();
 changeColor();
 
-// loop to look up in which box the player has clicked on the classes Array
-// Add the mark of the current player into the HTML class
-for (let i = 0; i < classes.length; i++) {
-  let boxElement = classes[i];
-  function inputMark() {
-    if (hasWinner) {
-      return;
-    }
-    if (currentPlayer == "circle") {
-      boxElement.classList.add(currentPlayer);
-      countTurn();
-    } else {
-      boxElement.classList.add(currentPlayer);
-      countTurn();
-    }
-    changePlayer();
-    checkWinner();
-    changeColor();
-  }
-
-  // Get which exactly possition of the classes Array was clicked and push it into the circleTurn and xTurn Arrays
-  function countTurn() {
-    if (currentPlayer == "circle") {
-      classIndex = classes.lastIndexOf(boxElement);
-      console.log(classIndex);
-      circleTurn.push(classIndex);
-    } else {
-      classIndex = classes.lastIndexOf(boxElement);
-      console.log(classIndex);
-      xTurn.push(classIndex);
-    }
-  }
-  boxElement.addEventListener("click", inputMark, { once: true });
-}
-
+// Change the player turn by add the player's name into the div .box
 function changePlayer() {
   if (currentPlayer == "circle") {
     currentPlayer = "x";
@@ -110,24 +79,52 @@ function changePlayer() {
   }
 }
 
-function checkTrue(counter) {
-  return winner.includes(counter);
+function markBox(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let boxElement = arr[i];
+    //inputMark() is activated by a click event that // Add a mark of the current player into the .box element
+    function inputMark() {
+      countTurn(boxElement);
+      changePlayer();
+      checkWinner();
+      changeColor();
+    }
+    // Get the last index of the classes's Array was clicked and push it into the circleTurn and xTurn Arrays
+    function countTurn(boxElement) {
+      boxElement.classList.add(currentPlayer);
+      if (currentPlayer == "circle") {
+        classIndex = classes.indexOf(boxElement);
+        circleTurn.push(classIndex);
+      } else {
+        classIndex = classes.indexOf(boxElement);
+        xTurn.push(classIndex);
+      }
+    }
+    boxElement.addEventListener("click", inputMark, { once: true });
+  }
+}
+markBox(classes);
+
+// function to return the winners combination in a include function
+function checkTrue(countTrue) {
+  return winner.includes(countTrue);
 }
 
+// loop to obtained an Array newWinner by calling the function checkTrue() with map() method
+// This function will loop through the winner's Array to check if the xTurn or circleTurn Arrays matches to any winning combination
+// winCount will filter into the newWinner Array only the true
+// If winCount has 3 or more true then will input true on hasWinner variable
 function checkWinner() {
   for (let j = 0; j < winnerCombination.length; j++) {
     winner = winnerCombination[j];
 
-    checkTrue();
-
     if (xTurn.length >= 3) {
       const newWinner = xTurn.map(checkTrue);
-
       const winCount = newWinner.filter(Boolean).length;
-      // console.log(winCount)
       if (winCount >= 3) {
+        winnerPlayer = "X";
         hasWinner = true;
-        // showWinner()
+        showWinner();
       }
     }
     if (circleTurn.length >= 3) {
@@ -136,28 +133,70 @@ function checkWinner() {
 
       if (winCount >= 3) {
         hasWinner = true;
-        // showWinner()
+        winnerPlayer = "Circle";
+        showWinner();
       }
     }
   }
-  if (hasWinner !== true) {
-    checkDraw();
+  if (circleTurn.length >= 3) {
+    const newWinner = circleTurn.map(checkTrue);
+    const winCount = newWinner.filter(Boolean).length;
+
+    if (winCount >= 3) {
+      hasWinner = true;
+      // showWinner()
+    }
   }
 }
+if (hasWinner !== true) {
+  checkDraw();
+}
 
+// Check which player is the winner and show the menssage
+function showWinner() {
+  document.getElementById("winner").style.display = "block";
+  document.getElementById("winner").style.backgroundColor =
+    "rgba(255, 255, 255, 0.3)";
+  document.getElementById("player").classList.add("player" + winnerPlayer);
+  document.getElementById("restart").style.display = "block";
+  document.getElementById("viewPort").style.filter = "blur(6px)";
+  countdownTimer();
+}
+
+// Check if is draw and show menssage
 function checkDraw() {
   if (xTurn.length + circleTurn.length === 9) {
     document.getElementById("winner").style.display = "block";
+    document.getElementById("winner").style.backgroundColor =
+      "rgba(255, 255, 255, 0.3)";
     document.getElementById("winner").innerHTML = "Its a tie!!";
+    document.getElementById("restart").style.display = "block";
+    document.getElementById("viewPort").style.filter = "blur(6px)";
+    countdownTimer();
   }
 }
 
-function showWinner() {
-  document.getElementById("winner").style.display = "block";
-  document.getElementById("winner").innerHTML =
-    "Player " + currentPlayer + " won!!";
+// Countdown timer for redirecting to another URL after several seconds
+function redirect() {
+  document.location.href = "index.html";
 }
 
-function redirect() {
-  document.location.href = "http://127.0.0.1:5500/index.html";
+function updateSecs() {
+  document.getElementById("seconds").innerHTML =
+    "The game will restart in " + seconds + " seconds";
+  seconds--;
+  if (seconds == -1) {
+    clearInterval(foo);
+    redirect();
+  }
 }
+
+function countdownTimer() {
+  foo = setInterval(function () {
+    updateSecs();
+  }, 1000);
+}
+
+document.getElementById("restart").onclick = function () {
+  location.href = "index.html";
+};

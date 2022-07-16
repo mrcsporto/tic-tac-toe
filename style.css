@@ -23,9 +23,10 @@ body {
 
 main {
     height: 100vh;
+    overflow: hidden;
 }
 
-a {
+a   {
     text-decoration: none;
 }
 
@@ -43,6 +44,18 @@ h2 {
     letter-spacing: 0.5px;
 }
 
+h3 {
+    color: var(--Secondary);
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+h3  a {
+    color: var(--Primary);
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -58,7 +71,7 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 300px;
+    width: 325px;
     height: 250px;
     border-bottom: 5px solid var(--Primary-Dark);
     border-right: 5px solid var(--Primary-Dark);
@@ -105,7 +118,7 @@ h2#playerX {
 #playerCircle:hover {
     background-color: var(--Secondary);
     box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
-    transform: translateY(-0.1em);
+    transform: translateY(0.1em);
     cursor: pointer;
     color: var(--Primary-Light)
 }
@@ -115,4 +128,29 @@ h2#playerX {
     transform: translateY(0);
     background-color: var(--Secondary-Dark);
     box-shadow: none;
+}
+
+@media screen and (max-width:480px) {
+
+    body {
+        overflow-y: hidden;
+    }
+
+    main {
+        height: 80vh;
+    }
+
+    .container {
+        justify-content: center;
+        height: 70vh;
+    }
+
+    h1 {
+        margin: 1rem 0 1rem 0;
+    }
+
+    .content {
+        width: 300px;
+        height: 250px;
+    }
 }
