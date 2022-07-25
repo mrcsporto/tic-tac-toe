@@ -188,7 +188,7 @@ h3  a {
     background-color: var(--Primary);
     width: 100%;
     height: 100%;
-    padding: 17em;
+    padding: 17em 0 17em 0;
 }
 
 #winner {
@@ -237,6 +237,15 @@ h3  a {
     letter-spacing: 0.5px;
 }
 
+@media screen and (max-width:850px) {
+    #showWinner {
+        padding: 50% 0 50% 0;
+    }
+    #seconds {
+        font-size: 180%;
+    }
+}
+
 @media screen and (max-width:480px) {
     .container {
         justify-content: space-around;
@@ -245,6 +254,8 @@ h3  a {
 
     #viewPort {
         justify-content: space-around;
+        padding-bottom: 20vh;
+        overflow: hidden;
     }
 
     h1 {
@@ -257,7 +268,7 @@ h3  a {
     }
 
     #showWinner {
-        padding: 16em 0 14em 0;
+        padding: 60% 0 90% 0;
     }
 
     #seconds {
@@ -274,6 +285,13 @@ h3  a {
 
     .box.circle::after {
         font-size: 12vh;
+    }
+
+}
+
+@media screen and (max-width:400px) {
+    #showWinner {
+        padding: 50% 0 70% 0;
     }
 
 }

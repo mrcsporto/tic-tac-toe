@@ -3,7 +3,7 @@ let xTurn = [] // Array to storage the X player moves
 let circleTurn = [] // Array to storage the Circle player moves
 let currentPlayer = '' //actual current player
 let hasWinner // variable to storage if game has a winner
-let seconds = 5 // seconds for HTML
+let seconds = 500 // seconds for HTML
 let foo // variable for clearInterval() function
 const winnerCombination = [
     [0, 1, 2],
