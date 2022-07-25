@@ -131,10 +131,11 @@ function checkWinner() {
 
 // Check which player is the winner and show the menssage
 function showWinner() {
-    document.getElementById('winner').style.display = 'block'
-    document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
+    document.getElementById('showWinner').style.display = 'flex'
+    document.getElementById('showWinner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
     document.getElementById('player').classList.add('player' + winnerPlayer)
     document.getElementById('restart').style.display = 'block'
+    document.getElementById('seconds').style.display = 'block'
     document.getElementById('viewPort').style.filter = 'blur(6px)'
     countdownTimer()
 }
@@ -142,10 +143,11 @@ function showWinner() {
 // Check if is draw and show menssage
 function checkDraw() {
     if ((xTurn.length + circleTurn.length === 9)) {
-        document.getElementById('winner').style.display = 'block'
-        document.getElementById('winner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
+        document.getElementById('showWinner').style.display = 'flex'
+        document.getElementById('showWinner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
         document.getElementById('winner').innerHTML = 'Its a tie!!'
         document.getElementById('restart').style.display = 'block'
+        document.getElementById('seconds').style.display = 'block'
         document.getElementById('viewPort').style.filter = 'blur(6px)'
         countdownTimer()
     }

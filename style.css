@@ -45,14 +45,14 @@ h2 {
 }
 
 h3 {
-    color: var(--Secondary);
+    color: var(--Primary-Dark);
     letter-spacing: 0.5px;
     text-align: center;
     margin-top: 1rem;
 }
 
-h3  a {
-    color: var(--Primary);
+h3 a {
+    color: var(--Primary-Light);
     text-decoration: none;
 }
 
@@ -118,7 +118,7 @@ h2#playerX {
 #playerCircle:hover {
     background-color: var(--Secondary);
     box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
-    transform: translateY(0.1em);
+    transform: translateY(-0.1em);
     cursor: pointer;
     color: var(--Primary-Light)
 }

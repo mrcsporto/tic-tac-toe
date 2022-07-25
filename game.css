@@ -120,7 +120,7 @@ h3  a {
         "div7 div8 div9";
 }
 
-div {
+.content div {
     background-color: var(--Primary);
 }
 
@@ -159,14 +159,13 @@ div {
     padding: 0.25rem 0.5rem;
     font-size: 4vh;
     font-weight: 600;
-    letter-spacing: 0.15rem;
+    letter-spacing: 0.1rem;
     cursor: pointer;
     text-decoration: none;
 }
 
 .reset:hover {
     background-color: var(--Primary-Light);
-    border: 1.5px solid var(--Secondary-Dark);
     box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
     color: var(--Secondary-Dark);
     transform: translateY(-0.1em);
@@ -180,14 +179,19 @@ div {
     box-shadow: none;
 }
 
-#winner {
-    display:none;
+#showWinner {
     position: absolute;
-    text-align: center;
-    line-height: 90vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--Primary);
     width: 100%;
     height: 100%;
-    background-color: var(--Primary);
+    padding: 17em;
+}
+
+#winner {
     color: var(--Secondary-Dark);
     font-size: 6vh;
     font-weight: 600;
@@ -195,9 +199,6 @@ div {
 }
 
 #restart {
-    display: none;
-    position: absolute;
-    margin-top: 4rem;
     color: var(--Secondary);
     border-top: 1.75px solid var(--Secondary);
     border-left: 1.75px solid var(--Secondary);
@@ -205,11 +206,10 @@ div {
     border-bottom: 2.5px solid var(--Secondary-Dark);
     background-color: var(--Secondary);
     color: var(--Primary-Light);
-    width: max-content;
-    padding: 0.25rem 0.5rem;
     font-size: 4vh;
+    padding: 0.25rem 0.5rem;
     font-weight: 600;
-    letter-spacing: 0.15rem;
+    letter-spacing: 0.1rem;
     cursor: pointer;
     text-decoration: none;
 }
@@ -231,24 +231,19 @@ div {
 }
 
 #seconds {
-    position: absolute;
-    bottom: 0;
     color: var(--Secondary);
     background-color: transparent;
     font-size: 130%;
     letter-spacing: 0.5px;
-    height: 38vh;
 }
 
 @media screen and (max-width:480px) {
     .container {
         justify-content: space-around;
-        padding-bottom: 8rem;
         overflow: hidden;
     }
 
     #viewPort {
-        height: 90vh;
         justify-content: space-around;
     }
 
@@ -261,17 +256,16 @@ div {
         height: 45vh;
     }
 
-    #winner {
-        bottom: 0;
-        height: 94vh;
+    #showWinner {
+        padding: 16em 0 14em 0;
+    }
+
+    #seconds {
+        font-size: 100%;
     }
 
     .reset {
         margin: 0 0 8rem 0;
-    }
-
-    #restart {
-        margin-top: 15vh;
     }
 
     .box.x::after {
@@ -281,8 +275,5 @@ div {
     .box.circle::after {
         font-size: 12vh;
     }
-    #seconds {
-        height: 32vh;
-        font-size: 3.5vw;
-    }
+
 }
