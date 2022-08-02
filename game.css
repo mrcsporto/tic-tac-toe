@@ -15,14 +15,6 @@
     --PlayerO: #605e62;
 }
 
-#showWinner {
-    display: none;
-}
-
-.showWinner #showWinner {
-    display: flex;
-}
-
 body {
     background-color: var(--Primary);
     font-family: 'Itim', sans-serif;
@@ -202,7 +194,6 @@ h3  a {
 #winner {
     color: var(--Secondary-Dark);
     font-size: 6vh;
-    font-weight: 600;
     letter-spacing: 0.5px;
 }
 
@@ -217,15 +208,17 @@ h3  a {
     font-size: 4vh;
     margin: 2rem 0;
     padding: 0.25rem 0.5rem;
-    font-weight: 600;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.05rem;
     cursor: pointer;
     text-decoration: none;
 }
 
 #restart:hover {
     background-color: var(--Primary-Light);
-    border: 1.5px solid var(--Secondary-Dark);
+    border-top: 1.75px solid var(--Secondary);
+    border-left: 1.75px solid var(--Secondary);
+    border-right: 2.5px solid var(--Secondary-Dark);
+    border-bottom: 2.5px solid var(--Secondary-Dark);
     box-shadow: 0px 5px 10px -5px var(--Secondary-Dark);
     color: var(--Secondary-Dark);
     transform: translateY(-0.1em);

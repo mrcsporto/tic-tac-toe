@@ -1,11 +1,11 @@
-let classes = Array.from(document.querySelectorAll('.box')) // variable to catch all the .box div and storage to a Array
+let boxElements = Array.from(document.querySelectorAll('.box')) // variable to catch all the .box div and storage to a Array
 let xTurn = [] // Array to storage the X player moves
 let circleTurn = [] // Array to storage the Circle player moves
 let currentPlayer = '' //actual current player
 let hasWinner // variable to storage if game has a winner
 let seconds = 500 // seconds for HTML (seconds to restart)
-let foo // variable for clearInterval() function
-const winnerCombination = [
+let timeInterval // variable for clearInterval() function
+const winnerCombinations = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -15,82 +15,74 @@ const winnerCombination = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-
 // function to insert player's symbol into the local path
-// TODO buscar utilizar query string pra passar na url o current player
-function firstPlayer() {
-    if (window.location.href.includes("#x")) {
+function insertFirstPlayer() {
+    if (window.location.href.includes("player=x")) {
         currentPlayer = 'x'
     } else {
         currentPlayer = 'circle'
     }
 }
-
 //function to highlight the player's turn when the game is running
-//TODO reduzir manipulando a classe somente do pai incluindo no DOM a classe active
 function changeColor() {
     const markPlayerX = document.getElementById('MarkPlayerX')
     const markPlayerCircle = document.getElementById('MarkPlayerCircle')
-    if (currentPlayer == 'x') {
-
-        document.getElementById('MarkPlayerCircle').style.backgroundColor = '#88B2CC'
-        document.getElementById('MarkPlayerCircle').style.border = '2px solid transparent'
+    if (currentPlayer === 'x') {
+        markPlayerCircle.style.backgroundColor = '#88B2CC'
+        markPlayerCircle.style.border = '2px solid transparent'
         markPlayerX.style.backgroundColor = '#a9c7db'
         markPlayerX.style.padding = '0.10rem 0.75rem'
         markPlayerX.style.border = '2px solid rgb(101, 142, 169)'
     }
-    if (currentPlayer == 'circle') {
+    if (currentPlayer === 'circle') {
         markPlayerX.style.backgroundColor = '#88B2CC'
         markPlayerX.style.border = '2px solid transparent'
-        document.getElementById('MarkPlayerCircle').style.backgroundColor = '#a9c7db'
-        document.getElementById('MarkPlayerCircle').style.padding = '0.10rem 0.75rem'
-        document.getElementById('MarkPlayerCircle').style.border = '2px solid rgb(101, 142, 169)'
+        markPlayerCircle.style.backgroundColor = '#a9c7db'
+        markPlayerCircle.style.padding = '0.10rem 0.75rem'
+        markPlayerCircle.style.border = '2px solid rgb(101, 142, 169)'
     }
-    if (hasWinner == true) {
+    if (hasWinner === true) {
         markPlayerX.style.backgroundColor = '#88B2CC'
         markPlayerX.style.border = '2px solid transparent'
-        document.getElementById('MarkPlayerCircle').style.backgroundColor = '#88B2CC'
-        document.getElementById('MarkPlayerCircle').style.border = '2px solid transparent'
+        markPlayerCircle.style.backgroundColor = '#88B2CC'
+        markPlayerCircle.style.border = '2px solid transparent'
     }
     if (hasWinner !== true && xTurn.length + circleTurn.length === 9) {
         markPlayerX.style.backgroundColor = '#88B2CC'
         markPlayerX.style.border = '2px solid transparent'
-        document.getElementById('MarkPlayerCircle').style.backgroundColor = '#88B2CC'
-        document.getElementById('MarkPlayerCircle').style.border = '2px solid transparent'
+        markPlayerCircle.style.backgroundColor = '#88B2CC'
+        markPlayerCircle.style.border = '2px solid transparent'
     }
 }
-firstPlayer()
+insertFirstPlayer()
 changeColor()
-
 // Change the player turn by add the player's name into the div .box
-// TODO utilizar ===
 function changePlayer() {
-    if (currentPlayer == 'circle') {
+    if (currentPlayer === 'circle') {
         currentPlayer = 'x'
     } else {
         currentPlayer = 'circle'
     }
 }
 
-//TODO 
 function markBox() {
-    for (let i = 0; i < classes.length; i++){
-      let boxElement = classes[i]
+    for (let i = 0; i < boxElements.length; i++){
+      let boxElement = boxElements[i]
      //inputMark() is activated by a click event that // Add a mark of the current player into the .box element
     function inputMark() {
-        countTurn(boxElement)
+        countTurn()
         changePlayer()
         checkWinner()
         changeColor()
     }
-// Get the last index of the classes's Array was clicked and push it into the circleTurn and xTurn Arrays
-    function countTurn(boxElement) {
+// Get the last index of the boxElements's Array was clicked and push it into the circleTurn and xTurn Arrays
+    function countTurn() {
         boxElement.classList.add(currentPlayer)
-        if (currentPlayer == 'circle') {
-            classIndex = classes.indexOf(boxElement)
+        if (currentPlayer === 'circle') {
+            classIndex = boxElements.indexOf(boxElement)
             circleTurn.push(classIndex)
         } else {
-            classIndex = classes.indexOf(boxElement)
+            classIndex = boxElements.indexOf(boxElement)
             xTurn.push(classIndex)
         }
     } 
@@ -98,26 +90,19 @@ function markBox() {
     }
 } 
 markBox()
-
 // function to return the winners combination in a include function
-// TODO trocar nome da função
-function checkTrue(countTrue) {
-    return winner.includes(countTrue)
+function checkWinnerCombination(winnerplayer) {
+    return winnerCombination.includes(winnerplayer)
 }
-
-// loop to obtained an Array newWinner by calling the function checkTrue() with map() method
-// This function will loop through the winner's Array to check if the xTurn or circleTurn Arrays matches to any winning combination
-// winCount will filter into the newWinner Array only the true
-// If winCount has 3 or more true then will input true on hasWinner variable
-// TODO criar uma função isolada e chamar no parâmetro os arrays de x e circle
-// TODO só verificar o jogados só acabou de jogar e trocar de ordem o changeplaye e checkwinner
-// TODO trocar winnerCombination variable para plural e winner para winnerCombination
+// loop to obtained an Array newCombination by calling the function checkWinnerCombination() with map() method
+// This function will loop through the Combination's Array to check if the xTurn or circleTurn Arrays matches to any winning combination
+// winCount will filter into the newCombination Array only the true
+// If winCount has 3 or more true then will input true on hasCombination variable
 function checkWinner() {
-    for (let j = 0; j < winnerCombination.length; j++) {
-        winner = winnerCombination[j]
-
+    for (let j = 0; j < winnerCombinations.length; j++) {
+        winnerCombination = winnerCombinations[j]
         if (xTurn.length >= 3) {
-            const newWinner = xTurn.map(checkTrue)
+            const newWinner = xTurn.map(checkWinnerCombination)
             const winCount = newWinner.filter(Boolean).length
             if (winCount >= 3) {
                 winnerPlayer = 'X'
@@ -126,7 +111,7 @@ function checkWinner() {
             }
         }
         if (circleTurn.length >= 3) {
-            const newWinner = circleTurn.map(checkTrue)
+            const newWinner = circleTurn.map(checkWinnerCombination)
             const winCount = newWinner.filter(Boolean).length
             if (winCount >= 3) {
                 hasWinner = true
@@ -139,9 +124,7 @@ function checkWinner() {
         checkDraw()
     }
 }
-
 // Check which player is the winner and show the menssage
-//TODO manipular somente o bloco pai no HTML para hide ou show
 function showWinner() {
     document.getElementById('showWinner').style.display = 'flex'
     document.getElementById('showWinner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
@@ -149,7 +132,6 @@ function showWinner() {
     document.getElementById('viewPort').style.filter = 'blur(6px)'
     countdownTimer()
 }
-
 // Check if is draw and show menssage
 function checkDraw() {
     if ((xTurn.length + circleTurn.length === 9)) {
@@ -160,7 +142,6 @@ function checkDraw() {
         countdownTimer()
     }
 }
-
 // Countdown timer for redirecting to another URL after several seconds
 function redirect() {
     document.location.href = 'index.html'
@@ -170,13 +151,13 @@ function updateSecs() {
     document.getElementById("seconds").innerHTML = 'The game will restart in ' + seconds + ' seconds'
     seconds--
     if (seconds == -1) {
-        clearInterval(foo)
+        clearInterval(timeInterval)
         redirect()
     }
 }
 
 function countdownTimer() {
-    foo = setInterval(function() {updateSecs()}, 1000)
+    timeInterval = setInterval(function() {updateSecs()}, 1000)
 }
 
 document.getElementById("restart").onclick = function() {
