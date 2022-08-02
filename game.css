@@ -15,6 +15,14 @@
     --PlayerO: #605e62;
 }
 
+#showWinner {
+    display: none;
+}
+
+.showWinner #showWinner {
+    display: flex;
+}
+
 body {
     background-color: var(--Primary);
     font-family: 'Itim', sans-serif;

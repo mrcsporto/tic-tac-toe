@@ -3,7 +3,7 @@ let xTurn = [] // Array to storage the X player moves
 let circleTurn = [] // Array to storage the Circle player moves
 let currentPlayer = '' //actual current player
 let hasWinner // variable to storage if game has a winner
-let seconds = 500 // seconds for HTML
+let seconds = 500 // seconds for HTML (seconds to restart)
 let foo // variable for clearInterval() function
 const winnerCombination = [
     [0, 1, 2],
@@ -17,6 +17,7 @@ const winnerCombination = [
 ]
 
 // function to insert player's symbol into the local path
+// TODO buscar utilizar query string pra passar na url o current player
 function firstPlayer() {
     if (window.location.href.includes("#x")) {
         currentPlayer = 'x'
@@ -26,30 +27,34 @@ function firstPlayer() {
 }
 
 //function to highlight the player's turn when the game is running
+//TODO reduzir manipulando a classe somente do pai incluindo no DOM a classe active
 function changeColor() {
+    const markPlayerX = document.getElementById('MarkPlayerX')
+    const markPlayerCircle = document.getElementById('MarkPlayerCircle')
     if (currentPlayer == 'x') {
+
         document.getElementById('MarkPlayerCircle').style.backgroundColor = '#88B2CC'
         document.getElementById('MarkPlayerCircle').style.border = '2px solid transparent'
-        document.getElementById('MarkPlayerX').style.backgroundColor = '#a9c7db'
-        document.getElementById('MarkPlayerX').style.padding = '0.10rem 0.75rem'
-        document.getElementById('MarkPlayerX').style.border = '2px solid rgb(101, 142, 169)'
+        markPlayerX.style.backgroundColor = '#a9c7db'
+        markPlayerX.style.padding = '0.10rem 0.75rem'
+        markPlayerX.style.border = '2px solid rgb(101, 142, 169)'
     }
     if (currentPlayer == 'circle') {
-        document.getElementById('MarkPlayerX').style.backgroundColor = '#88B2CC'
-        document.getElementById('MarkPlayerX').style.border = '2px solid transparent'
+        markPlayerX.style.backgroundColor = '#88B2CC'
+        markPlayerX.style.border = '2px solid transparent'
         document.getElementById('MarkPlayerCircle').style.backgroundColor = '#a9c7db'
         document.getElementById('MarkPlayerCircle').style.padding = '0.10rem 0.75rem'
         document.getElementById('MarkPlayerCircle').style.border = '2px solid rgb(101, 142, 169)'
     }
     if (hasWinner == true) {
-        document.getElementById('MarkPlayerX').style.backgroundColor = '#88B2CC'
-        document.getElementById('MarkPlayerX').style.border = '2px solid transparent'
+        markPlayerX.style.backgroundColor = '#88B2CC'
+        markPlayerX.style.border = '2px solid transparent'
         document.getElementById('MarkPlayerCircle').style.backgroundColor = '#88B2CC'
         document.getElementById('MarkPlayerCircle').style.border = '2px solid transparent'
     }
     if (hasWinner !== true && xTurn.length + circleTurn.length === 9) {
-        document.getElementById('MarkPlayerX').style.backgroundColor = '#88B2CC'
-        document.getElementById('MarkPlayerX').style.border = '2px solid transparent'
+        markPlayerX.style.backgroundColor = '#88B2CC'
+        markPlayerX.style.border = '2px solid transparent'
         document.getElementById('MarkPlayerCircle').style.backgroundColor = '#88B2CC'
         document.getElementById('MarkPlayerCircle').style.border = '2px solid transparent'
     }
@@ -58,6 +63,7 @@ firstPlayer()
 changeColor()
 
 // Change the player turn by add the player's name into the div .box
+// TODO utilizar ===
 function changePlayer() {
     if (currentPlayer == 'circle') {
         currentPlayer = 'x'
@@ -66,9 +72,10 @@ function changePlayer() {
     }
 }
 
-function markBox(arr) {
-    for (let i = 0; i < arr.length; i++){
-      let boxElement = arr[i]
+//TODO 
+function markBox() {
+    for (let i = 0; i < classes.length; i++){
+      let boxElement = classes[i]
      //inputMark() is activated by a click event that // Add a mark of the current player into the .box element
     function inputMark() {
         countTurn(boxElement)
@@ -87,11 +94,13 @@ function markBox(arr) {
             xTurn.push(classIndex)
         }
     } 
-        boxElement.addEventListener('click', inputMark, {once: true})
+    boxElement.addEventListener('click', inputMark, {once: true})
     }
-} markBox(classes)
+} 
+markBox()
 
 // function to return the winners combination in a include function
+// TODO trocar nome da função
 function checkTrue(countTrue) {
     return winner.includes(countTrue)
 }
@@ -100,6 +109,9 @@ function checkTrue(countTrue) {
 // This function will loop through the winner's Array to check if the xTurn or circleTurn Arrays matches to any winning combination
 // winCount will filter into the newWinner Array only the true
 // If winCount has 3 or more true then will input true on hasWinner variable
+// TODO criar uma função isolada e chamar no parâmetro os arrays de x e circle
+// TODO só verificar o jogados só acabou de jogar e trocar de ordem o changeplaye e checkwinner
+// TODO trocar winnerCombination variable para plural e winner para winnerCombination
 function checkWinner() {
     for (let j = 0; j < winnerCombination.length; j++) {
         winner = winnerCombination[j]
@@ -108,7 +120,7 @@ function checkWinner() {
             const newWinner = xTurn.map(checkTrue)
             const winCount = newWinner.filter(Boolean).length
             if (winCount >= 3) {
-                winnerPlayer = "X"
+                winnerPlayer = 'X'
                 hasWinner = true
                 showWinner()
             }
@@ -116,10 +128,9 @@ function checkWinner() {
         if (circleTurn.length >= 3) {
             const newWinner = circleTurn.map(checkTrue)
             const winCount = newWinner.filter(Boolean).length
-
             if (winCount >= 3) {
                 hasWinner = true
-                winnerPlayer = "Circle"
+                winnerPlayer = 'Circle'
                 showWinner()
             }
         }
@@ -130,12 +141,11 @@ function checkWinner() {
 }
 
 // Check which player is the winner and show the menssage
+//TODO manipular somente o bloco pai no HTML para hide ou show
 function showWinner() {
     document.getElementById('showWinner').style.display = 'flex'
     document.getElementById('showWinner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
     document.getElementById('player').classList.add('player' + winnerPlayer)
-    document.getElementById('restart').style.display = 'block'
-    document.getElementById('seconds').style.display = 'block'
     document.getElementById('viewPort').style.filter = 'blur(6px)'
     countdownTimer()
 }
@@ -146,8 +156,6 @@ function checkDraw() {
         document.getElementById('showWinner').style.display = 'flex'
         document.getElementById('showWinner').style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
         document.getElementById('winner').innerHTML = 'Its a tie!!'
-        document.getElementById('restart').style.display = 'block'
-        document.getElementById('seconds').style.display = 'block'
         document.getElementById('viewPort').style.filter = 'blur(6px)'
         countdownTimer()
     }
